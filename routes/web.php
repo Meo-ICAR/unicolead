@@ -1,3 +1,5 @@
+<?php
+
 use App\Models\Lead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +19,7 @@ Route::get('/b/{token}', function ($token, Request $request) {
 
     // Update lead tracking status
     $lead->increment('views_count');
-    if (!$lead->opened_at) {
+    if (! $lead->opened_at) {
         $lead->update([
             'opened_at' => now(),
         ]);
